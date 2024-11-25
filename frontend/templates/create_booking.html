@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Booking{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <!-- title -->
+    <h2>Create a Booking</h2>
+
+    <!-- booking form, creates a new booking entry linked to the user -->
+    <form method="post" novalidate>
+        {% csrf_token %}
+
+        <!-- render the form as a bunch of <p> elements instead of manually, this will do -->
+        {{ form.as_p }}
+
+        <!-- submit! -->
+        <button type="submit" class="btn btn-primary">Submit Booking</button>
+    </form>
+</div>
+{% endblock %}

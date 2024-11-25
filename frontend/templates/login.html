@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Login - TrolleyProblem{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <!-- title for login form -->
+    <h2>Login</h2>
+
+    <!-- actual login form -->
+    <form method="post">
+        {% csrf_token %}
+
+        <!-- username field -->
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required autofocus>
+
+        <!-- password field -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <!-- submit! -->
+        <button type="submit">Login</button>
+    </form>
+
+    <!-- if something goes wrong (wrong details), display error message -->
+    {% if form.errors %}
+    <p class="error">Invalid username or password. Please try again.</p>
+    {% endif %}
+
+</div>
+{% endblock %}

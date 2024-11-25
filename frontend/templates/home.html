@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Home - TrolleyProblem{% endblock %}
+
+{% block content %}
+<div class="home-container">
+
+    <!-- welcome message, uses the username of the user -->
+    <h2>Welcome, {{ user }}!</h2>
+
+    <!-- booking list-->
+    <h3>Your Bookings:</h3>
+    <ul class="booking-list">
+        {% for booking in bookings %}
+        <li class="booking-item">
+            <div class="booking-info">
+                <!-- booking information -->
+                <span><strong>Date:</strong> {{ booking.date }}</span>
+                <span><strong>Timeslot:</strong> {{ booking.timeslot }}</span>
+                <span><strong>Room:</strong> {{ booking.room }}</span>
+                <span><strong>Status:</strong> {{ booking.get_status_display }}</span>
+            </div>
+    
+            <!-- form to delete booking -->
+            <form action="{% url 'delete_booking' booking.id %}" method="post" class="delete-form">
+                {% csrf_token %}
+                <!-- onclick confirmation of delete -->
+                <button type="submit"
+                        class="delete-button"
+                        onclick="return confirm('Are you sure you want to delete this booking?');">Delete</button>
+            </form>
+        </li>
+
+        {% empty %}
+        <!-- message for when no bookings exist for this user -->
+        <p>No bookings found.</p>
+        {% endfor %}
+    </ul>            
+    
+</div>
+{% endblock %}

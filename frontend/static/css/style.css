@@ -1,0 +1,231 @@
+/* General Variables */
+:root {
+    --primary-bg: #333;
+    --primary-hover: rgba(170, 170, 170, 0.25);
+    --primary-text: #ffffff;
+    --secondary-bg: #f4f4f4;
+    --error-bg: red;
+    --error-bg-hover: darkred;
+    --link-color: #00ffe1;
+    --box-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--secondary-bg);
+    color: var(--primary-bg);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header Styling */
+header {
+    background-color: var(--primary-bg);
+    box-shadow: 0 2px 5px var(--box-shadow);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Header Container */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Logo Section */
+.header-left {
+    flex: 0; /* Reduce logo space allocation */
+}
+
+.logo-img {
+    background-color: var(--primary-text);
+    height: 65px;
+    width: auto;
+    padding: 5px;
+    border-radius: 25px;
+    display: block;
+}
+
+/* Title Section */
+.header-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* Center the title horizontally in the header */
+    text-align: center;
+}
+
+.header-title h1 {
+    color: var(--primary-text);
+    font-size: 1.8rem;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* Navigation Section */
+.header-nav {
+    display: flex;
+    align-items: center; /* Vertically align nav items */
+    justify-content: flex-end;
+    flex-grow: 1; /* Allow navigation section to grow and fill space */
+}
+
+.header-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+}
+
+.header-nav ul li {
+    margin-left: 10px; /* Adjusted margin for consistent spacing */
+}
+
+.header-nav ul li a {
+    color: var(--primary-text);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px; /* Added padding for a consistent look */
+    border-radius: 4px;
+    display: inline-flex; /* Make the anchor tag an inline flex container */
+    align-items: center; /* Vertically align text */
+    transition: background-color 0.3s ease;
+}
+
+.header-nav ul li a:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Make the logout button match the other navbar items */
+.header-nav ul li form button {
+    background: none;
+    border: none;
+    color: var(--primary-text);
+    font-weight: bold;
+    font-size: 1rem; /* Match the font size of the other navbar items */
+    padding: 5px 10px; /* Increase padding for a more consistent look */
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex; /* Ensures the button's text is vertically aligned */
+    align-items: center; /* Vertically center the text */
+    transition: background-color 0.3s ease;
+}
+
+.header-nav ul li form button:hover {
+    background-color: var(--primary-hover); /* Ensure hover effect is consistent */
+}
+
+/* Main Content */
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background: var(--primary-text);
+    box-shadow: 0 2px 5px var(--box-shadow);
+    flex-grow: 1; /* Ensures content area grows to take up available space */
+    line-height: 1.5;
+}
+
+/* Booking List */
+.booking-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.booking-item {
+    display: grid; /* Use grid layout for the booking items */
+    grid-template-columns: 1fr 1fr 1fr 1fr auto; /* 4 equal columns for the booking info, and an auto column for the delete button */
+    gap: 10px; /* Space between the columns */
+    align-items: center; /* Vertically center the content in the grid */
+    margin-bottom: 10px; /* Space between each item */
+    width: 100%; /* Ensure the item spans the full width */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.booking-item:hover {
+    transform: scale(1.01); /* Slight zoom effect */
+    box-shadow: 0 4px 8px var(--box-shadow);
+}
+
+.booking-info {
+    display: contents; /* Allow the spans inside to behave like direct children of .booking-item */
+}
+
+.booking-info span {
+    text-align: left; /* Align text to the left */
+    min-width: 0; /* Allow text to wrap properly without overflowing */
+}
+
+.delete-form {
+    justify-self: end; /* Align the delete button to the far right of the container */
+}
+
+.delete-button {
+    background-color: var(--error-bg);
+    border: none;
+    color: var(--primary-text);
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition:color 0.3s ease, background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: var(--error-bg-hover);
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+a {
+    color: var(--link-color); /* Set link color */
+  }
+
+/* Responsive Design: Hide Logo and Title on Smaller Screens */
+@media (max-width: 768px) {
+    .header-left {
+        display: none; /* Hide logo */
+    }
+    
+    .header-title {
+        display: none; /* Hide title */
+    }
+    
+    .header-nav {
+        text-align: center; /* Center the nav bar */
+        justify-content: center;
+    }
+    
+    .header-nav ul {
+        justify-content: center; /* Center items in the navbar */
+    }
+
+    .booking-info span {
+        text-align: left; /* Align text to the left on larger screens */
+    }
+}

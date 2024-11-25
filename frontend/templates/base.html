@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- meta info -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- page title, defaults to TrolleyProblem if not defined by django -->
+    <title>{% block title %}TrolleyProblem{% endblock %}</title>
+
+    <!-- load static files /frontend/static/ -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <!-- header section -->
+    <header>
+        <div class="header-container">
+
+            <!-- logo, stored at /frontend/static/images/logo.png -->
+            <div class="header-left">
+                <img src="{% static 'images/logo.png' %}" alt="TrolleyProblem Logo" class="logo-img">
+            </div>
+
+            <!-- main title -->
+            <div class="header-title">
+                <h1>TrolleyProblem</h1>
+            </div>
+
+            <!-- navigation bar -->
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="{% url 'home' %}">Booking List</a></li>
+                    <li><a href="{% url 'create_booking' %}">Create Booking</a></li>
+                    <li>
+                        <!-- the logout button is secretly a form to get around django logout authorisation requiring POST lol -->
+                        <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="logout-btn">Logout</button>
+                        </form>
+                    </li>                  
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- main content -->
+    <div class="content">
+        {% block content %}
+        <!-- content injected here by child templates -->
+        {% endblock %}
+    </div>
+
+    <!-- footer text thatsits at the bottom of the page -->
+    <footer>
+        <p>Developed by TrueGIXERJ - <a href="https://discord.gg/zkhuwD5">Discord</a> - Public GitHub repo available at <a href="https://github.com/TrueGIXERJ/TrolleyProblem" target="_blank">/TrueGIXERJ/TrolleyProblem</a></p>
+    </footer>
+</body>
+</html>
