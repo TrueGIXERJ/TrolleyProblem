@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load socialaccount %}
+
 {% block title %}Login - TrolleyProblem{% endblock %}
 
 {% block content %}
@@ -28,5 +30,13 @@
     <p class="error">Invalid username or password. Please try again.</p>
     {% endif %}
 
+    <!-- microsoft sign in button for SSO -->
+    {% if ENABLE_MICROSOFT_OAUTH %}
+        <div class="social-login-buttons">
+            <a href="{% provider_login_url 'microsoft' %}" class="btn btn-microsoft">Sign in with Microsoft</a>
+        </div>
+    {% else %}
+        <p>Microsoft Login is currently disabled - To enable set ENABLE_MICROSOFT_OAUTH = True in settings.py</p>
+    {% endif %}
 </div>
 {% endblock %}

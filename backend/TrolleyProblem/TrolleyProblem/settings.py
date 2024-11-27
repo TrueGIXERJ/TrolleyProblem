@@ -42,6 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # booking app
     'Bookings',
+    # auth
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.microsoft',
 ]
 
 # middleware config
@@ -53,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 # root url config
@@ -78,6 +85,28 @@ TEMPLATES = [
 # wsgi app
 WSGI_APPLICATION = 'TrolleyProblem.wsgi.application'
 
+AUTHENTICATION_BACKENDS = (
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+SOCIAL_AUTH_MICROSOFT_REDIRECT_URI = 'http://localhost:8000/accounts/microsoft/login/callback/'
+SITE_URL = 'http://localhost:8000'
+SOCIALACCOUNT_LOGIN_ON_GET=True
+ENABLE_MICROSOFT_OAUTH = False  # set to True if you want to use Microsoft OAuth
+
+SOCIALACCOUNT_PROVIDERS = {
+    'microsoft': {
+        'SCOPE': ['openid', 'email', 'profile',],
+        'AUTH_PARAMS': {
+            'response_type': 'code',
+            # 'tenant': 'TENANT ID FOR ORGANISATION SSO'
+        },
+        'METHOD': 'oauth2',
+        'VERIFIED_EMAIL': True,
+    }
+}
+
+SITE_ID = 1
 
 # Database
 DATABASES = {
