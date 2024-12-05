@@ -3,6 +3,10 @@ from django.contrib.auth.decorators import login_required
 from .models import Booking, Equipment
 from django.contrib import messages
 from .forms import BookingForm
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.conf import settings
 
 @login_required
 def home_view(request):
@@ -50,7 +54,26 @@ def create_booking_view(request):
                 booking.equipment = available_equipment
                 booking.save()
 
-                messages.success(request, "Your booking has been successfully created!")
+                if getattr(settings, 'EMAIL_NOTIFICATIONS_ENABLED', False):
+                    messages.success(request, "Your booking has been successfully created, a confirmation email will be sent shortly.")
+
+                    subject = "Booking Confirmation"
+                    context = {
+                        'user': request.user,
+                        'booking': booking,
+                    }
+                    html_message = render_to_string('email_templates/booking_confirmation.html', context)
+                    plain_message = strip_tags(html_message)
+                    recipient_email = request.user.email
+
+                    send_mail(
+                        subject,
+                        plain_message,
+                        settings.DEFAULT_FROM_EMAIL,
+                        [recipient_email],
+                        html_message=html_message,
+                    )
+
                 return redirect('home')  # redirect to the home page after successful booking
             else:
                 messages.error(request, "No available equipment for the selected date and timeslot.")

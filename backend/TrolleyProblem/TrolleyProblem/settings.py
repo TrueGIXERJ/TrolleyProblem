@@ -77,7 +77,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'bookings.context_processors.enable_microsoft_oauth',
+                'Bookings.context_processors.enable_microsoft_oauth',
             ],
         },
     },
@@ -93,7 +93,7 @@ AUTHENTICATION_BACKENDS = (
 SOCIAL_AUTH_MICROSOFT_REDIRECT_URI = 'http://localhost:8000/accounts/microsoft/login/callback/'
 SITE_URL = 'http://localhost:8000'
 SOCIALACCOUNT_LOGIN_ON_GET=True
-ENABLE_MICROSOFT_OAUTH = False  # set to True if you want to use Microsoft OAuth
+ENABLE_MICROSOFT_OAUTH = True  # set to True if you want to use Microsoft OAuth
 
 SOCIALACCOUNT_PROVIDERS = {
     'microsoft': {
@@ -149,3 +149,17 @@ STATICFILES_DIRS = [
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# email sending settings CHANGEME
+
+EMAIL_NOTIFICATIONS_ENABLED = False # set to TRUE to enable email notifications
+
+"""
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.office365.com'  # Replace with your SMTP server
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'your.email@your-domain.com'  # Your email address
+EMAIL_HOST_PASSWORD = 'Password1'  # Your email password or app-specific password
+DEFAULT_FROM_EMAIL = 'postmaster@northoxfordshire-academy.org' # Email to be sent from
+"""
