@@ -1,0 +1,146 @@
+/* General Variables */
+:root {
+    --login-bg: #333;
+    --login-hover: #515151; /* this is the colour of the header-hover accounting for opacity, promise */
+    --login-text: #ffffff;
+    --login-bg2: #ffffff;
+    --loginform-bg: #f4f4f4;
+    --ms-blue: #0078d4;
+    --ms-hover: #005a8f;
+    --box-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Login Page Container */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 10vh;
+    padding: 20px;
+}
+
+/* Login Form */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: var(--loginform-bg);
+    color: var(--login-bg);
+    padding: 30px;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--box-shadow);
+}
+
+/* Input Fields */
+.inputForm {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--login-hover);
+    border-radius: 5px;
+    padding: 10px;
+    background-color: var(--login-bg2);
+    transition: border-color 0.3s ease;
+}
+
+.inputForm:focus-within {
+    border-color: var(--link-color);
+}
+
+.input {
+    border: none;
+    outline: none;
+    width: 100%;
+    background: transparent;
+    font-size: 14px;
+    color: var(--login-bg);
+}
+
+.input::placeholder {
+    color: rgba(51, 51, 51, 0.6);
+    font-size: 14px;
+}
+
+/* Labels */
+.flex-column > label {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--login-bg);
+}
+
+/* Submit Button */
+.button-submit {
+    background-color: var(--login-bg);
+    color: var(--login-text);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-submit:hover {
+    background-color: var(--login-hover);
+    color: var(--login-text);
+}
+
+/* login w microsoft */
+.social-login-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.btn-microsoft {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--ms-blue);
+    color: var(--login-text);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    gap: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-microsoft img {
+    height: 25px;
+    width: 25px;
+}
+
+.btn-microsoft:hover {
+    background-color: var(--ms-hover);
+}
+
+/* Error Messages */
+.error {
+    background-color: var(--login-hover);
+    color: var(--login-bg);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Text for disabled MS login */
+.p {
+    text-align: center;
+    color: var(--login-bg);
+    font-size: 14px;
+    margin: 10px 0;
+}

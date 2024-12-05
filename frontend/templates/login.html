@@ -1,42 +1,57 @@
 {% extends "base.html" %}
 
 {% load socialaccount %}
+{% load static %}  <!-- Load static files -->
 
 {% block title %}Login - TrolleyProblem{% endblock %}
 
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="login-container">
-    <!-- title for login form -->
     <h2>Login</h2>
 
-    <!-- actual login form -->
-    <form method="post">
+    <!-- Login form with the form class and input styling -->
+    <form method="post" class="form">
         {% csrf_token %}
+        
+        <!-- Username field -->
+        <div class="flex-column">
+            <label for="username">Username:</label>
+            <div class="inputForm">
+                <input type="text" id="username" name="username" required autofocus class="input" placeholder="Enter your username">
+            </div>
+        </div>
+        
+        <!-- Password field -->
+        <div class="flex-column">
+            <label for="password">Password:</label>
+            <div class="inputForm">
+                <input type="password" id="password" name="password" required class="input" placeholder="Enter your password">
+            </div>
+        </div>
 
-        <!-- username field -->
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required autofocus>
+        <!-- Submit button -->
+        <button type="submit" class="button-submit">Login</button>
 
-        <!-- password field -->
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-
-        <!-- submit! -->
-        <button type="submit">Login</button>
     </form>
 
-    <!-- if something goes wrong (wrong details), display error message -->
     {% if form.errors %}
     <p class="error">Invalid username or password. Please try again.</p>
     {% endif %}
 
-    <!-- microsoft sign in button for SSO -->
+    <!-- Microsoft sign in button -->
     {% if ENABLE_MICROSOFT_OAUTH %}
-        <div class="social-login-buttons">
-            <a href="{% provider_login_url 'microsoft' %}" class="btn btn-microsoft">Sign in with Microsoft</a>
-        </div>
+    <div class="social-login-buttons">
+        <a href="{% provider_login_url 'microsoft' %}" class="btn btn-microsoft">
+            <img src="{% static 'images/microsoft.png' %}" alt="Microsoft Logo">
+            Sign in with Microsoft
+        </a>
+    </div>
     {% else %}
-        <p>Microsoft Login is currently disabled - To enable set ENABLE_MICROSOFT_OAUTH = True in settings.py</p>
+    <p>Microsoft Login is currently disabled - To enable set ENABLE_MICROSOFT_OAUTH = True in settings.py</p>
     {% endif %}
 </div>
 {% endblock %}
