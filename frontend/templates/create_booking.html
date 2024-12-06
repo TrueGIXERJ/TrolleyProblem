@@ -3,7 +3,7 @@
 {% block title %}Create Booking{% endblock %}
 
 {% block content %}
-<div class="form-container">
+<div class="form-container booking-form-container">
     <!-- title -->
     <h2>Create a Booking</h2>
 
@@ -11,11 +11,28 @@
     <form method="post" novalidate>
         {% csrf_token %}
 
-        <!-- render the form as a bunch of <p> elements instead of manually, this will do -->
-        {{ form.as_p }}
+        <div class="form-group">
+            <label for="{{ form.date.id_for_label }}">{{ form.date.label }}</label>
+            {{ form.date }}
+        </div>
 
-        <!-- submit! -->
-        <button type="submit" class="btn btn-primary">Submit Booking</button>
+        <div class="form-group">
+            <label for="{{ form.timeslot.id_for_label }}">{{ form.timeslot.label }}</label>
+            {{ form.timeslot }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.room.id_for_label }}">{{ form.room.label }}</label>
+            {{ form.room }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.notes.id_for_label }}">{{ form.notes.label }}</label>
+            {{ form.notes }}
+        </div>
+
+        <!-- submit button styled as in login form -->
+        <button type="submit" class="submit-button">Submit Booking</button>
     </form>
 </div>
 {% endblock %}

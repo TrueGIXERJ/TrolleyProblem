@@ -93,7 +93,7 @@ AUTHENTICATION_BACKENDS = (
 SOCIAL_AUTH_MICROSOFT_REDIRECT_URI = 'http://localhost:8000/accounts/microsoft/login/callback/'
 SITE_URL = 'http://localhost:8000'
 SOCIALACCOUNT_LOGIN_ON_GET=True
-ENABLE_MICROSOFT_OAUTH = True  # set to True if you want to use Microsoft OAuth
+ENABLE_MICROSOFT_OAUTH = False  # set to True if you want to use Microsoft OAuth
 
 SOCIALACCOUNT_PROVIDERS = {
     'microsoft': {

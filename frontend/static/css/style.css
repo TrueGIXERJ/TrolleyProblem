@@ -142,6 +142,83 @@ header {
     line-height: 1.5;
 }
 
+/* Container for forms */
+.form-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Container for the booking form specifically*/
+.booking-form-container h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* General form styling */
+.form-group {
+    margin-bottom: 5px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 3px;
+    font-size: 14px;
+}
+
+/* Input fields styling */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #007bff;
+    background-color: #fff;
+    outline: none;
+}
+
+/* Button styling */
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+.submit-button:active {
+    background-color: #004085;
+}
+
+
 /* Booking List */
 .booking-list {
     list-style: none;
@@ -177,20 +254,73 @@ header {
     justify-self: end; /* Align the delete button to the far right of the container */
 }
 
-.delete-button {
-    background-color: var(--error-bg);
-    border: none;
-    color: var(--primary-text);
-    padding: 5px 10px;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 4px;
-    transition:color 0.3s ease, background-color 0.3s ease;
-}
 
-.delete-button:hover {
-    background-color: var(--error-bg-hover);
-}
+/* All the delete button code came from Uiverse.io by sihamjardi, with a few adjustments */
+/* Thanks for making up for my terrible frontend skills lol */
+.delete-button {
+    position: relative;
+    border-radius: 6px;
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid #cc0000;
+    background-color: #e50000;
+    overflow: hidden;
+  }
+  
+  .delete-button,
+  .delete-button__icon,
+  .delete-button__text {
+    transition: all 0.3s ease;
+  }
+  
+  .delete-button .delete-button__text {
+    transform: translateX(20px);
+    color: #fff;
+    font-weight: 600;
+    padding-left: 10px
+  }
+  
+  .delete-button .delete-button__icon {
+    position: absolute;
+    transform: translateX(109px);
+    height: 100%;
+    width: 39px;
+    background-color: #cc0000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .delete-button .svg {
+    width: 20px;
+    fill: white;
+  }
+  
+  .delete-button:hover {
+    background: #cc0000;
+  }
+  
+  .delete-button:hover .delete-button__text {
+    color: transparent;
+  }
+  
+  .delete-button:hover .delete-button__icon {
+    width: 98px;
+    transform: translateX(0);
+  }
+  
+  .delete-button:active .delete-button__icon {
+    background-color: #b20000;
+  }
+  
+  .delete-button:active {
+    border: 1px solid #b20000;
+  }
+      
 
 /* Footer */
 footer {
