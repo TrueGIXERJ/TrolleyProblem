@@ -161,5 +161,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'your.email@your-domain.com'  # Your email address
 EMAIL_HOST_PASSWORD = 'Password1'  # Your email password or app-specific password
-DEFAULT_FROM_EMAIL = 'postmaster@northoxfordshire-academy.org' # Email to be sent from
+DEFAULT_FROM_EMAIL = 'sender.email@your-domain.com' # Email to be sent from
 """
