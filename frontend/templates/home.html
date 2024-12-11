@@ -24,7 +24,7 @@
             <!-- form to delete booking -->
             <form action="{% url 'delete_booking' booking.id %}" method="post" class="delete-form">
                 {% csrf_token %}
-                <button class="delete-button" type="button">
+                <button class="delete-button" type="submit">
                     <span class="delete-button__text">Delete</span>
                     <span class="delete-button__icon">
                       <svg

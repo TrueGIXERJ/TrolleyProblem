@@ -5,8 +5,7 @@
     --login-text: #ffffff;
     --login-bg2: #ffffff;
     --loginform-bg: #f4f4f4;
-    --ms-blue: #0078d4;
-    --ms-hover: #005a8f;
+    --ms-hover: #515151;
     --box-shadow: rgba(0, 0, 0, 0.1);
 }
 
@@ -105,7 +104,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--ms-blue);
+    background-color: #333;
     color: var(--login-text);
     padding: 10px 20px;
     border-radius: 5px;
@@ -128,7 +127,7 @@
 
 /* Error Messages */
 .error {
-    background-color: var(--login-hover);
+    background-color: #dd0000;
     color: var(--login-bg);
     padding: 10px;
     border-radius: 5px;

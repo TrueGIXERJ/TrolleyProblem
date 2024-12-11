@@ -254,6 +254,15 @@ header {
     justify-self: end; /* Align the delete button to the far right of the container */
 }
 
+.error-messages {
+    color: #d9534f; /* Bootstrap's danger color */
+    font-size: 12px;
+    margin-top: 1px;
+}
+
+.error-text {
+    margin: 0;
+}
 
 /* All the delete button code came from Uiverse.io by sihamjardi, with a few adjustments */
 /* Thanks for making up for my terrible frontend skills lol */
